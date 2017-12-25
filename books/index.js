@@ -1,4 +1,15 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+// Step 1: Import Libraries that we need
+import React, { Component } from 'react';
+import { Text, AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent('books', () => App)
+// Step2: Create the component
+class App extends Component {
+    render() {
+        return (
+            <Text>Hello World</Text>
+        );
+    }
+}
+
+// Step3: Register or export the component
+AppRegistry.registerComponent('books', () => App);
