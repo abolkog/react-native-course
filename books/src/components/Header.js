@@ -4,7 +4,7 @@ import { Text, View, StyleSheet } from 'react-native';
 const Header = () => {
     return (
         <View style={styles.viewStyle} >
-            <Text>Books</Text>
+            <Text style={styles.textStyle}>Books</Text>
         </View>
     );
 };
@@ -12,7 +12,15 @@ const Header = () => {
 const styles = StyleSheet.create({
     viewStyle: {
         height: 60,
-        backgroundColor: '#2a3744'
+        backgroundColor: '#2a3744',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 15
+    },
+    textStyle: {
+       color: '#82b541',
+       fontSize: 17,
+       fontWeight: 'bold'
     }
 });
 
