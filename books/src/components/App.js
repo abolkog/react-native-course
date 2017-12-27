@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import Header from './Header';
+import BooksList from './BooksList';
 
 // Step2: Create the component
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
         return (
             <View>
                 <Header />
+                <BooksList />
             </View>
         );
     }
