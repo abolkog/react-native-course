@@ -1,6 +1,6 @@
 // Step 1: Import Libraries that we need
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import axios from 'axios';
 
 // Step2: Create the component
@@ -21,17 +21,25 @@ class BooksList extends Component {
             });
     }
 
-    render() {
+    renderBookItem = ({ item }) => {
         return (
             <View>
-                { this.state.books.map(book => {
-                    return (
-                        <View>
-                            <Text>{book.name}</Text>
-                            <Text>{book.price}</Text>
-                        </View>
-                    );
-                })}
+                <Text>{item.name}</Text>
+                <Text>{item.price}</Text>
+            </View>
+        );
+    }
+
+    keyExtractor = (item, index) => index;
+    
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                <FlatList
+                    data={this.state.books}
+                    renderItem={this.renderBookItem}
+                    keyExtractor={this.keyExtractor}
+                />
             </View>
         );
     }
