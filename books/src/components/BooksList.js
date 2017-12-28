@@ -8,7 +8,6 @@ class BooksList extends Component {
     componentWillMount() {
         // Calls to the server
         const url = 'https://abolkog.com/api/books';
-        
         axios.get(url)
             .then((response) => {
                 const books = response.data.books;
