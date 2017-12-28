@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import axios from 'axios';
 
+import ListItem from './ListItem';
+
 // Step2: Create the component
 class BooksList extends Component {
     constructor(props) {
@@ -22,12 +24,13 @@ class BooksList extends Component {
     }
 
     renderBookItem = ({ item }) => {
-        return (
-            <View>
-                <Text>{item.name}</Text>
-                <Text>{item.price}</Text>
-            </View>
-        );
+        // return (
+        //     <View>
+        //         <Text>{item.name}</Text>
+        //         <Text>{item.price}</Text>
+        //     </View>
+        // );
+        return <ListItem />;
     }
 
     keyExtractor = (item, index) => index;
