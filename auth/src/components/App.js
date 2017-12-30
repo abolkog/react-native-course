@@ -30,7 +30,7 @@ class App extends Component {
             case true: 
                 return (
                     <View style={styles.logoutContainer}>
-                        <Button>Log Out</Button>
+                        <Button onPress={() => firebase.auth().signOut()}>Log Out</Button>
                     </View>
                 );
             case false: 
@@ -39,6 +39,7 @@ class App extends Component {
                 return <Spinner />;
         }
     }
+    
     render() {
         return (
             <View style={styles.container}>
