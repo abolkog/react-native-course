@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import Header from './common/Header';
+import { Header } from './common';
+import LoginForm from './LoginForm';
 
 // create a component
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
         return (
             <View style={styles.container}>
                 <Header title='Auth' />
+                <LoginForm />
             </View>
         );
     }
@@ -18,7 +20,7 @@ class App extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
 });
 
