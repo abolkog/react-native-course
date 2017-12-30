@@ -24,13 +24,7 @@ class BooksList extends Component {
     }
 
     renderBookItem = ({ item }) => {
-        // return (
-        //     <View>
-        //         <Text>{item.name}</Text>
-        //         <Text>{item.price}</Text>
-        //     </View>
-        // );
-        return <ListItem />;
+        return <ListItem book={item} />;
     }
 
     keyExtractor = (item, index) => index;
