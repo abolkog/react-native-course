@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
+import Button from './Button';
+
 const ListItem = (props) => {
     const book = props.book;
     return (
@@ -15,7 +17,8 @@ const ListItem = (props) => {
                 </View>
             </View>
 
-            <Text>Button Here</Text>
+            <Button />
+
         </View>
     );
 };
