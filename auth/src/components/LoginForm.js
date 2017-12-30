@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-// import Card from './common/Card';
-// import CardItem from './common/CardItem';
-// import Button from './common/Button';
+import firebase from '../firebase';
 
 import { Card, CardItem, Button, Input } from './common';
 
@@ -15,13 +13,23 @@ class LoginForm extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            error: ''
         }
     }
 
     onLoginPressed () {
-        console.log(`UserName is : ${this.state.email}`);
-        console.log(`Password is : ${this.state.password}`);
+        const { email, password } = this.state;
+        
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch( () => {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                .catch(this.onAuthFailed.bind(this));
+            }); 
+    }
+
+    onAuthFailed() {
+        this.setState({ 'error': 'Authentication Failed' });
     }
 
     render() {
@@ -45,6 +53,8 @@ class LoginForm extends Component {
                     />
                 </CardItem>
                 
+                <Text style={styles.errorMessage} >{this.state.error}</Text>
+
                 <CardItem>
                     <Button onPress={this.onLoginPressed.bind(this)}>Login</Button>
                 </CardItem>
@@ -56,7 +66,11 @@ class LoginForm extends Component {
 
 // define your styles
 const styles = StyleSheet.create({
-    container: {
+    errorMessage: {
+        fontSize: 16,
+        alignSelf: 'center',
+        color: '#FF0000',
+        marginTop: 5
     },
 });
 
