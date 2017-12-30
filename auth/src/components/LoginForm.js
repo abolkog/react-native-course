@@ -36,7 +36,7 @@ class LoginForm extends Component {
     }
 
     showButtonOrSpinner() {
-        if (this.state.loading) return <Spinner  />
+        if (this.state.loading) return <Spinner  />;
 
         return (
             <Button onPress={this.onLoginPressed.bind(this)}>Login</Button>
