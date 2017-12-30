@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 // import CardItem from './common/CardItem';
 // import Button from './common/Button';
 
-import { Card, CardItem, Button } from './common';
+import { Card, CardItem, Button, Input } from './common';
 
 
 // create a component
@@ -14,9 +14,21 @@ class LoginForm extends Component {
     render() {
         return (
             <Card>
-                <CardItem></CardItem>
+                <CardItem>
+                    <Input 
+                        label='Email'
+                        placeholder='Enter your email'
+                        secureTextEntry={false}
+                    />
+                </CardItem>
                 
-                <CardItem></CardItem>
+                <CardItem>
+                    <Input
+                        label='Password'
+                        placeholder='Enter your password'
+                        secureTextEntry={true}
+                    />
+                </CardItem>
                 
                 <CardItem>
                     <Button>Login</Button>
