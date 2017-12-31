@@ -1,13 +1,21 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 // create a component
 class Contacts extends Component {
+    renderContact({ item }) {
+        return <Text>{item.name}</Text>;
+    }
     render() {
         return (
             <View style={styles.container}>
-                <Button title='Details' onPress={() => this.props.navigation.navigate('details') } />
+                <FlatList 
+                    data={this.props.contacts}
+                    renderItem={this.renderContact}
+                    keyExtractor={item => item.id }
+                />
             </View>
         );
     }
@@ -16,12 +24,14 @@ class Contacts extends Component {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        flex: 1
     },
 });
 
+const mapStateToProps = state => {
+    return {
+        contacts: state.contacts
+    };
+};
 //make this component available to the app
-export default Contacts;
+export default connect(mapStateToProps)(Contacts);

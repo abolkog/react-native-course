@@ -1,6 +1,5 @@
-//import liraries
+// import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -20,5 +19,5 @@ class App extends Component {
 }
 
 
-//make this component available to the app
+// make this component available to the app
 export default App;

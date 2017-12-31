@@ -1,4 +1,4 @@
-//import liraries
+// import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -23,5 +23,5 @@ const styles = StyleSheet.create({
     },
 });
 
-//make this component available to the app
+// make this component available to the app
 export default Details;

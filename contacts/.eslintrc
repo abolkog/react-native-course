@@ -1,3 +1,7 @@
 {
-    "extends": "abolkog"
+    "extends": "abolkog",
+    "rules": {
+        "eol-last": 0,
+        "spaced-comment": 0
+    }
 }
