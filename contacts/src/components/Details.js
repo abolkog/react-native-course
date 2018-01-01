@@ -1,6 +1,6 @@
 // import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardItem, Button } from './common';
 
@@ -9,12 +9,25 @@ class Details extends Component {
 
     callContact() {
         const phone = this.props.contact.phone;
-        console.log(`Calling ${phone}`);
+        const url = `tel:${phone}`;
+        this.lanuchUrl(url);
     }
 
     textContact() {
         const phone = this.props.contact.phone;
-        console.log(`Texting ${phone}`);
+        const url = `sms:${phone}`;
+        this.lanuchUrl(url);
+    }
+
+    lanuchUrl(url) {
+        Linking.canOpenURL(url)
+            .then(supported => {
+                if (!supported) {
+                    Alert.alert('App Not supported');
+                } else {
+                    Linking.openURL(url);
+                }
+            });
     }
     
     render() {
