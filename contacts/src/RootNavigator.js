@@ -11,7 +11,10 @@ const Routes = StackNavigator({
         }
     },
     details: {
-        screen: Details
+        screen: Details,
+        navigationOptions: {
+            title: 'Details'
+        }
     }
 });
 
