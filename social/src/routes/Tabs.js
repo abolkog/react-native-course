@@ -9,11 +9,15 @@ import Profile from '../components/Profile';
 
 import Colors from '../constants/Colors';
 
+import { AddButton, LogoutButton } from './HeaderButtons';
+
 const Tabs = TabNavigator({
     Home: {
         screen : Home,
         navigationOptions: ({ navigation }) => ({
             title: 'Home',
+            headerRight: <AddButton navigation={navigation} />,
+            headerLeft: <LogoutButton navigation={navigation}/>,
             tabBarIcon: ({ tintColor }) => {
                 return (
                     <FAIcon 
@@ -29,6 +33,7 @@ const Tabs = TabNavigator({
         screen: Profile,
         navigationOptions: ({ navigation }) => ({
             title: 'Profile',
+            headerLeft: <LogoutButton navigation={navigation} />,
             tabBarIcon: ({ tintColor }) => {
                 return (
                     <MIcon

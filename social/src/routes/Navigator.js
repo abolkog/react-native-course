@@ -2,10 +2,12 @@ import { StackNavigator } from 'react-navigation';
 
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import AddPost from '../components/AddPost';
 
 import Colors from '../constants/Colors';
 
 import Tabs from './Tabs';
+
 
 const Navigator = StackNavigator({
     Main: {
@@ -23,6 +25,9 @@ const Navigator = StackNavigator({
             title: 'Signup'
         }
     },
+    Add: {
+        screen: AddPost
+    }
     
 }, {
     navigationOptions : {
