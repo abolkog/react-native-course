@@ -2,8 +2,10 @@ import { StackNavigator } from 'react-navigation';
 
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import Home from '../components/Home';
 
 import Colors from '../constants/Colors';
+
 
 const Navigator = StackNavigator({
     Login: {
@@ -17,6 +19,9 @@ const Navigator = StackNavigator({
         navigationOptions: {
             title: 'Signup'
         }
+    },
+    Home: {
+        screen : Home
     }
 }, {
     navigationOptions : {
