@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { FormInput, FormLabel, Button, Avatar } from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
+import { connect } from 'react-redux';
 
 import Colors from '../constants/Colors';
 
@@ -81,6 +82,12 @@ class Signup extends Component {
     }
 }
 
-
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error,
+        signedup: state.auth.signedup,
+    }
+};
 //make this component available to the app
-export default Signup;
+export default connect(mapStateToProps)(Signup);
