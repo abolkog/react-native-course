@@ -11,6 +11,8 @@ export default(state = INITIAL_STATE , action) => {
             return { ...state, loading: true  }
         case SIGNIN_FAILED: 
             return { ...state, loading: false, error: action.payload };
+        case SIGNIN_SUCCESS:
+            return { ...state, loading: false, signedup: true };
         default: 
             return state;
     };

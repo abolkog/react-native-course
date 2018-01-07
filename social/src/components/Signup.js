@@ -20,6 +20,13 @@ class Signup extends Component {
             disabled: true
         }
     }
+
+    componentWillReceiveProps(nextProp) {
+        if (nextProp.signedup) {
+            this.props.navigation.goBack();
+        }
+    }
+
     onSelectProfilePicture() {
         const options = {
             title: 'Select Profile Image',
