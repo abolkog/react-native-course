@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import { FormInput, FormLabel, Button, Avatar } from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
-
+import { signup } from '../actions';
 import Colors from '../constants/Colors';
 
 // create a component
@@ -34,6 +34,22 @@ class Signup extends Component {
             })
         });
     }
+
+    onSignup() {
+        const { name, email, profileImage, password } = this.state;
+        this.props.signup({ name, email, password, profileImage });
+    }
+
+    showErrorMessage() {
+        if (this.props.error) {
+            return (
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
+                    <Text style={{ color: Colors.redColor, fontSize: 16  }}>{this.props.error}</Text>
+                </View>
+            );
+        }
+    }
+
     render() {
         return (
             <View>
@@ -69,12 +85,15 @@ class Signup extends Component {
                     secureTextEntry
                     onChangeText={(password) => this.setState({ password })}
                 />
-
+                
+                { this.showErrorMessage() }
                 <Button
                     title='Sign up'
                     backgroundColor={Colors.blue}
                     buttonStyle={{ marginTop: 20 }}
                     disabled={this.state.disabled}
+                    onPress={this.onSignup.bind(this)}
+                    loading={this.props.loading}
                 />
 
             </View>
@@ -90,4 +109,4 @@ const mapStateToProps = state => {
     }
 };
 //make this component available to the app
-export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps, { signup })(Signup);

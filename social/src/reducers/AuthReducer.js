@@ -9,6 +9,8 @@ export default(state = INITIAL_STATE , action) => {
     switch(action.type) {
         case ATTEMPTING: 
             return { ...state, loading: true  }
+        case SIGNIN_FAILED: 
+            return { ...state, loading: false, error: action.payload };
         default: 
             return state;
     };
