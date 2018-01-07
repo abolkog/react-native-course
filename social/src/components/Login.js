@@ -20,7 +20,7 @@ class Login extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.profile) {
-            this.props.navigation.navigate('Home')
+            this.props.navigation.navigate('Main')
         }
     }
 

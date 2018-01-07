@@ -2,12 +2,15 @@ import { StackNavigator } from 'react-navigation';
 
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import Home from '../components/Home';
 
 import Colors from '../constants/Colors';
 
+import Tabs from './Tabs';
 
 const Navigator = StackNavigator({
+    Main: {
+        screen: Tabs
+    },
     Login: {
         screen: Login,
         navigationOptions: {
@@ -20,9 +23,7 @@ const Navigator = StackNavigator({
             title: 'Signup'
         }
     },
-    Home: {
-        screen : Home
-    }
+    
 }, {
     navigationOptions : {
         headerStyle: {

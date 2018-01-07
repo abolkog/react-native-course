@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
-class Home extends Component {
+class Profile extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Home</Text>
+                <Text>Profile</Text>
             </View>
         );
     }
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default Home;
+export default Profile;
