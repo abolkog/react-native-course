@@ -26,7 +26,10 @@ const Navigator = StackNavigator({
         }
     },
     Add: {
-        screen: AddPost
+        screen: AddPost,
+        navigationOptions: {
+            title: 'Share Image'
+        }
     }
     
 }, {
