@@ -5,6 +5,8 @@ import { FormInput, FormLabel, Button, Avatar} from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 
+import { addPost } from '../actions';
+
 import Colors from '../constants/Colors';
 
 // create a component
@@ -17,6 +19,12 @@ class AddPost extends Component {
             postImage: '',
             disabled: true
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.added) {
+            this.props.navigation.goBack();
+        }
     }
 
 
@@ -53,6 +61,8 @@ class AddPost extends Component {
 
     onShareButtonPressed() {
         const { postImage, imageName, title } = this.state;
+        const { profile } = this.props;
+        this.props.addPost(title, profile, postImage, imageName );
     }
 
     render() {
@@ -78,7 +88,7 @@ class AddPost extends Component {
 
                 <Button
                     title='Share'
-                    backgroundColor={Colors.blue}
+                    backgroundColor={Colors.redColor}
                     buttonStyle={{ marginTop: 20 }}
                     disabled={this.state.disabled}
                     onPress={this.onShareButtonPressed.bind(this)}
@@ -101,4 +111,4 @@ const mapStateToProps = state => {
 };
 
 //make this component available to the app
-export default connect(mapStateToProps)(AddPost);
+export default connect(mapStateToProps, { addPost })(AddPost);

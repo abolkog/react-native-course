@@ -10,9 +10,6 @@ import Tabs from './Tabs';
 
 
 const Navigator = StackNavigator({
-    Main: {
-        screen: Tabs
-    },
     Login: {
         screen: Login,
         navigationOptions: {
@@ -24,6 +21,9 @@ const Navigator = StackNavigator({
         navigationOptions: {
             title: 'Signup'
         }
+    },
+    Main: {
+        screen: Tabs
     },
     Add: {
         screen: AddPost,

@@ -96,7 +96,7 @@ class Signup extends Component {
                 { this.showErrorMessage() }
                 <Button
                     title='Sign up'
-                    backgroundColor={Colors.blue}
+                    backgroundColor={Colors.redColor}
                     buttonStyle={{ marginTop: 20 }}
                     disabled={this.state.disabled}
                     onPress={this.onSignup.bind(this)}
