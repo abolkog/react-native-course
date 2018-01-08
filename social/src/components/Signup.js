@@ -18,7 +18,7 @@ class Signup extends Component {
             name: '',
             password: '',
             disabled: true
-        }
+        };
     }
 
     componentWillReceiveProps(nextProp) {
@@ -38,7 +38,7 @@ class Signup extends Component {
             this.setState({
                 profileImage: response.uri,
                 disabled: false
-            })
+            });
         });
     }
 
@@ -50,8 +50,10 @@ class Signup extends Component {
     showErrorMessage() {
         if (this.props.error) {
             return (
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-                    <Text style={{ color: Colors.redColor, fontSize: 16  }}>{this.props.error}</Text>
+                <View 
+                    style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}
+                >
+                    <Text style={{ color: Colors.redColor, fontSize: 16 }}>{this.props.error}</Text>
                 </View>
             );
         }
@@ -60,7 +62,7 @@ class Signup extends Component {
     render() {
         return (
             <View>
-                <View style={{ marginVertical: 10, alignItems: 'center', justifyContent: 'center'}} >
+                <View style={{ marginVertical: 10, alignItems: 'center', justifyContent: 'center' }} >
                 <Avatar 
                     large
                     rounded
@@ -113,7 +115,7 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         signedup: state.auth.signedup,
-    }
+    };
 };
 //make this component available to the app
 export default connect(mapStateToProps, { signup })(Signup);

@@ -13,7 +13,8 @@ const Navigator = StackNavigator({
     Login: {
         screen: Login,
         navigationOptions: {
-            title: 'Login'
+            title: 'Login',
+            headerLeft: null
         }
     },
     Signup: {
@@ -33,7 +34,7 @@ const Navigator = StackNavigator({
     }
     
 }, {
-    navigationOptions : {
+    navigationOptions: {
         headerStyle: {
             backgroundColor: Colors.redColor
         },

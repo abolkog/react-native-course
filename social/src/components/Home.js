@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator, Image } from 'react-native';
+import { View, FlatList, ActivityIndicator } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 
@@ -16,7 +16,19 @@ class Home extends Component {
     }
     
     renderPostItem({ item }) {
-        return <View></View>
+        return (
+            <Card
+                title={item.title}
+                image={{ uri: item.url }}
+            >
+                <ListItem 
+                    title={item.author.name}
+                    avatar={{ uri: item.author.imageUrl }}
+                    roundAvatar
+                />
+
+            </Card>
+        );
     }
 
     keyExtractor = (item, index) => index;
