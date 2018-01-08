@@ -1,7 +1,9 @@
 import {
     ADDING_FAILED,
     ADDING_POST,
-    ADDING_SUCCESS
+    ADDING_SUCCESS,
+    FETCHING,
+    FETCHING_DONE
 } from './types';
 
 import firebase from '../firebease';
@@ -31,6 +33,28 @@ export const addPost = (title, author, postImage, imageName) => {
     };
 };
 
+export const fetchPosts = () => {
+    return (dispatch) => {
+        
+        dispatch({ type: FETCHING });
+
+        firebase.database().ref('posts')
+            .limitToLast(30)
+            .on('value', (snapshot) => {
+                const data = snapshot.val() || [];
+                handleData(dispatch, data);
+            });
+    };
+};
+
+const handleData = (dispatch, data) => {
+    const posts = [];
+    Object.values(data).forEach(item => {
+        posts.unshift(item);
+    });
+
+    dispatch({ type: FETCHING_DONE, payload: posts });
+};
 
 const handleError = (dispatch, error) => {
     dispatch({ type: ADDING_FAILED, payload: error });
