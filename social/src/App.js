@@ -6,6 +6,9 @@ import { createStore, applyMiddleware } from 'redux';
 import Navigator from './routes/Navigator';
 import reducers from './reducers';
 
+// Yellow Box warning
+console.disableYellowBox = true; 
+
 // create a component
 class App extends Component {
     render() {
