@@ -5,7 +5,7 @@ import {
     LOGIN_SUCCESS
 } from './types';
 
-import firebase from '../firebease';
+import firebase from '../firebase';
 import { uploadImage } from './Helper';
 
 
@@ -14,7 +14,7 @@ export const signup = ({ name, email, password, profileImage }) => {
         dispatch({ type: ATTEMPTING });
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(resp => handleAccountCreated(dispatch, resp.uid, name, profileImage ))
+            .then(resp => handleAccountCreated(dispatch, resp.uid, name, profileImage))
             .catch(error => handleError(dispatch, error.message));
     };
 };
@@ -43,14 +43,14 @@ const handleLoginSuccess = (dispatch, userId) => {
         });
 };
 
-const handleAccountCreated = (dispatch, userId, name, profileImage ) => {
+const handleAccountCreated = (dispatch, userId, name, profileImage) => {
     //Upload the image
     const imageName = `${userId}.jpg`;
     uploadImage(profileImage, 'profiles', imageName)
         .then((url) => {
             firebase.database().ref(`profiles/${userId}`)
                 .set({ name, imageUrl: url })
-                .then(() => { dispatch({ type: SIGNIN_SUCCESS}) })
+                .then(() => { dispatch({ type: SIGNIN_SUCCESS }); })
                 .catch(error => handleError(dispatch, error.message));
         })
         .catch(error => handleError(dispatch, error.message));

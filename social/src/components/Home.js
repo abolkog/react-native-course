@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator } from 'react-native';
+import { View, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 
@@ -36,7 +36,7 @@ class Home extends Component {
     showSpinerOrPosts() {
         if (this.props.fetching) {
             return (
-                <View style={{ flex: 1, alignItems:'center', justifyContent:'center' }}>
+                <View style={styles.container}>
                     <ActivityIndicator size='large' color={Colors.redColor} />
                 </View>
             );
@@ -60,6 +60,14 @@ class Home extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        alignItems: 
+        'center',
+        justifyContent: 'center'
+    }
+});
 
 const mapStateToProps = state => {
     return {
@@ -69,4 +77,4 @@ const mapStateToProps = state => {
 };
 
 //make this component available to the app
-export default connect(mapStateToProps, { fetchPosts} )(Home);
+export default connect(mapStateToProps, { fetchPosts })(Home);

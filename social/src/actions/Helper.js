@@ -1,9 +1,9 @@
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Platform } from 'react-native';
-import firebase from '../firebease';
+import firebase from '../firebase';
 
 const Blob = RNFetchBlob.polyfill.Blob;
-const fs   = RNFetchBlob.fs;
+const fs = RNFetchBlob.fs;
 window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
 window.Blob = Blob;
 
@@ -11,7 +11,7 @@ window.Blob = Blob;
 // uri: the image 
 // ref: name of the reference (folder)
 // imageName: name of the image we want to upload
-export const uploadImage = (uri, ref, imageName ) => {
+export const uploadImage = (uri, ref, imageName) => {
     return new Promise((resolve, reject) => {
         const mime = 'image/jpg';
         let uploadBlob = null;
@@ -30,6 +30,6 @@ export const uploadImage = (uri, ref, imageName ) => {
         .then((url) => {
             resolve(url);
         })
-        .catch(error => { reject(error) });
+        .catch(error => { reject(error); });
     });
 };

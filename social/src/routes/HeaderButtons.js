@@ -5,7 +5,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../constants/Colors';
-import firebase from '../firebease';
+import firebase from '../firebase';
 
 export const AddButton = ({ navigation }) => {
     return (
@@ -25,8 +25,9 @@ export const AddButton = ({ navigation }) => {
 export const LogoutButton = ({ navigation }) => {
     return (
         <TouchableOpacity 
-            onPress={() => logout(navigation) }
-            style={{ marginLeft: 10 }}>
+            onPress={() => logout(navigation)}
+            style={{ marginLeft: 10 }}
+        >
             <FAIcon
                 name='sign-out'
                 size={30}

@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { FormInput, FormLabel, Button, Avatar } from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
@@ -50,25 +50,40 @@ class Signup extends Component {
     showErrorMessage() {
         if (this.props.error) {
             return (
-                <View 
-                    style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}
-                >
-                    <Text style={{ color: Colors.redColor, fontSize: 16 }}>{this.props.error}</Text>
+                <View style={styles.containerWithMargin}>
+                    <Text style={styles.errorMessage}>{this.props.error}</Text>
                 </View>
             );
         }
     }
 
-    render() {
-        return (
-            <View>
-                <View style={{ marginVertical: 10, alignItems: 'center', justifyContent: 'center' }} >
-                <Avatar 
+    showSelectedAvatar() {
+        if (this.state.profileImage) {
+            return (
+                <Avatar
                     large
                     rounded
                     onPress={this.onSelectProfilePicture.bind(this)}
                     source={{ uri: this.state.profileImage }}
                 />
+            );
+        }
+
+        return (
+            <Avatar
+                large
+                rounded
+                onPress={this.onSelectProfilePicture.bind(this)}
+            />
+        );
+    }
+
+    render() {
+        return (
+            <View>
+                <View style={styles.containerWithMargin} >
+                { this.showSelectedAvatar() }
+               
                 </View>
 
                 <FormLabel>Name</FormLabel>
@@ -109,6 +124,18 @@ class Signup extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    containerWithMargin: {
+        marginVertical: 10, 
+        alignItems: 'center', 
+        justifyContent: 'center'
+    },
+    errorMessage: {
+        color: Colors.redColor, 
+        fontSize: 16
+    }
+});
 
 const mapStateToProps = state => {
     return {

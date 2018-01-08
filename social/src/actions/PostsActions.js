@@ -6,7 +6,7 @@ import {
     FETCHING_DONE
 } from './types';
 
-import firebase from '../firebease';
+import firebase from '../firebase';
 import { uploadImage } from './Helper';
 
 export const addPost = (title, author, postImage, imageName) => {
@@ -25,11 +25,11 @@ export const addPost = (title, author, postImage, imageName) => {
 
                 firebase.database().ref('posts').push(postToSave)
                     .then(() => {
-                        dispatch({ type: ADDING_SUCCESS })
+                        dispatch({ type: ADDING_SUCCESS });
                     })
-                    .catch(erro => handleError(dispatch, error.message));
+                    .catch(error => handleError(dispatch, error.message));
             })
-            .catch(erro => handleError(dispatch, error.message));
+            .catch(error => handleError(dispatch, error.message));
     };
 };
 

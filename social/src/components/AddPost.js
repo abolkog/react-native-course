@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { FormInput, FormLabel, Button, Avatar} from 'react-native-elements';
+import { View, Text, StyleSheet } from 'react-native';
+import { FormInput, FormLabel, Button, Avatar } from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 
@@ -31,8 +31,8 @@ class AddPost extends Component {
     showErrorMessage() {
         if (this.props.error) {
             return (
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-                    <Text style={{ color: Colors.redColor, fontSize: 16 }}>{this.props.error}</Text>
+                <View style={styles.containerWithMargin}>
+                    <Text style={styles.errorMessage}>{this.props.error}</Text>
                 </View>
             );
         }
@@ -43,7 +43,7 @@ class AddPost extends Component {
             title: 'Select Image to share',
             quality: 0.1,
             mediaType: 'photo'
-        }
+        };
 
         ImagePicker.showImagePicker(options, (response) => {
             if (response) {
@@ -62,19 +62,36 @@ class AddPost extends Component {
     onShareButtonPressed() {
         const { postImage, imageName, title } = this.state;
         const { profile } = this.props;
-        this.props.addPost(title, profile, postImage, imageName );
+        this.props.addPost(title, profile, postImage, imageName);
+    }
+
+    showSelectedImage() {
+        if (this.props.postImage) {
+            return (
+                <Avatar
+                    large
+                    rounded
+                    onPress={this.onSelectPostImage.bind(this)}
+                    source={{ uri: this.state.postImage }}
+                />
+            );
+        }
+
+        return (
+            <Avatar
+                large
+                rounded
+                onPress={this.onSelectPostImage.bind(this)}
+            />
+        );
+        
     }
 
     render() {
         return (
             <View>
-                <View style={{ marginVertical: 10, alignItems: 'center', justifyContent: 'center' }} >
-                    <Avatar
-                        large
-                        rounded
-                        onPress={this.onSelectPostImage.bind(this)}
-                        source={{ uri: this.state.postImage }}
-                    />
+                <View style={styles.containerWithMargin} >
+                    {this.showSelectedImage()}
                 </View>
 
                 <FormLabel>Title</FormLabel>
@@ -99,6 +116,19 @@ class AddPost extends Component {
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    containerWithMargin: {
+        marginVertical: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    errorMessage: {
+        color: Colors.redColor,
+        fontSize: 16
+    }
+});
 
 
 const mapStateToProps = state => {

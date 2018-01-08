@@ -13,7 +13,7 @@ import { AddButton, LogoutButton } from './HeaderButtons';
 
 const Tabs = TabNavigator({
     Home: {
-        screen : Home,
+        screen: Home,
         navigationOptions: ({ navigation }) => ({
             title: 'Home',
             headerRight: <AddButton navigation={navigation} />,
