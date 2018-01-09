@@ -30,8 +30,9 @@ class Signup extends Component {
     onSelectProfilePicture() {
         const options = {
             title: 'Select Profile Image',
-            quality: 0.1,
-            mediaType: 'photo'
+            quality: 0.1, //Image quality 0 lowest , 1 heights
+            mediaType: 'photo',
+            maxHeight: 200 // Speed up android loading
         };
 
         ImagePicker.showImagePicker(options, (response) => {
@@ -56,33 +57,16 @@ class Signup extends Component {
             );
         }
     }
-
-    showSelectedAvatar() {
-        if (this.state.profileImage) {
-            return (
-                <Avatar
-                    large
-                    rounded
-                    onPress={this.onSelectProfilePicture.bind(this)}
-                    source={{ uri: this.state.profileImage }}
-                />
-            );
-        }
-
-        return (
-            <Avatar
-                large
-                rounded
-                onPress={this.onSelectProfilePicture.bind(this)}
-            />
-        );
-    }
-
     render() {
         return (
             <View>
                 <View style={styles.containerWithMargin} >
-                { this.showSelectedAvatar() }
+                    <Avatar
+                        large
+                        rounded
+                        onPress={this.onSelectProfilePicture.bind(this)}
+                        source={{ uri: this.state.profileImage }}
+                    />
                
                 </View>
 

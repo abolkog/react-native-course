@@ -41,8 +41,9 @@ class AddPost extends Component {
     onSelectPostImage() {
         const options = {
             title: 'Select Image to share',
-            quality: 0.1,
-            mediaType: 'photo'
+            quality: 0.1, //Image quality 0 lowest , 1 heights
+            mediaType: 'photo',
+            maxHeight: 200 // Speed up android loading
         };
 
         ImagePicker.showImagePicker(options, (response) => {
@@ -65,33 +66,16 @@ class AddPost extends Component {
         this.props.addPost(title, profile, postImage, imageName);
     }
 
-    showSelectedImage() {
-        if (this.props.postImage) {
-            return (
-                <Avatar
-                    large
-                    rounded
-                    onPress={this.onSelectPostImage.bind(this)}
-                    source={{ uri: this.state.postImage }}
-                />
-            );
-        }
-
-        return (
-            <Avatar
-                large
-                rounded
-                onPress={this.onSelectPostImage.bind(this)}
-            />
-        );
-        
-    }
-
     render() {
         return (
             <View>
                 <View style={styles.containerWithMargin} >
-                    {this.showSelectedImage()}
+                    <Avatar
+                        large
+                        rounded
+                        onPress={this.onSelectPostImage.bind(this)}
+                        source={{ uri: this.state.postImage }}
+                    />
                 </View>
 
                 <FormLabel>Title</FormLabel>
