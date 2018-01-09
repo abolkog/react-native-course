@@ -9,9 +9,9 @@ const INITIAL_STATE = { loading: false, error: '', profile: null, signedup: fals
 export default(state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ATTEMPTING: 
-            return { ...state, loading: true };
+            return { ...state, loading: true, profile: null };
         case SIGNUP_FAILED: 
-            return { ...state, loading: false, error: action.payload };
+            return { ...state, loading: false, error: action.payload, profile: null };
         case SIGNUP_SUCCESS:
             return { ...state, loading: false, signedup: true };
         case LOGIN_SUCCESS:
