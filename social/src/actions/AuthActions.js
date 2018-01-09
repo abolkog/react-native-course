@@ -1,7 +1,7 @@
 import {
     ATTEMPTING,
-    SIGNIN_SUCCESS,
-    SIGNIN_FAILED,
+    SIGNUP_FAILED,
+    SIGNUP_SUCCESS,
     LOGIN_SUCCESS
 } from './types';
 
@@ -50,12 +50,12 @@ const handleAccountCreated = (dispatch, userId, name, profileImage) => {
         .then((url) => {
             firebase.database().ref(`profiles/${userId}`)
                 .set({ name, imageUrl: url })
-                .then(() => { dispatch({ type: SIGNIN_SUCCESS }); })
+                .then(() => { dispatch({ type: SIGNUP_SUCCESS }); })
                 .catch(error => handleError(dispatch, error.message));
         })
         .catch(error => handleError(dispatch, error.message));
 };
 
 const handleError = (dispatch, message) => {
-    dispatch({ type: SIGNIN_FAILED, payload: message });
+    dispatch({ type: SIGNUP_FAILED, payload: message });
 };

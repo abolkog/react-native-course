@@ -1,6 +1,6 @@
 export const ATTEMPTING = 'ATTEMPTING';
-export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
-export const SIGNIN_FAILED = 'SIGNIN_FAILED';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export const ADDING_POST = 'ADDING_POST';

@@ -1,7 +1,7 @@
 import {
     ATTEMPTING,
-    SIGNIN_FAILED,
-    SIGNIN_SUCCESS,
+    SIGNUP_FAILED,
+    SIGNUP_SUCCESS,
     LOGIN_SUCCESS
 } from '../actions/types';
 
@@ -10,9 +10,9 @@ export default(state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ATTEMPTING: 
             return { ...state, loading: true };
-        case SIGNIN_FAILED: 
+        case SIGNUP_FAILED: 
             return { ...state, loading: false, error: action.payload };
-        case SIGNIN_SUCCESS:
+        case SIGNUP_SUCCESS:
             return { ...state, loading: false, signedup: true };
         case LOGIN_SUCCESS:
             return { ...state, loading: false, profile: action.payload, error: '' };
