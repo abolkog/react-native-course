@@ -1,2 +1,3 @@
 # React Native Course
-This repo contains the code of the course
+
+This repo contains the course code.
