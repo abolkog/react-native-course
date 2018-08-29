@@ -14,10 +14,7 @@ import { AddButton, LogoutButton } from './HeaderButtons';
 const Tabs = TabNavigator({
     Home: {
         screen: Home,
-        navigationOptions: ({ navigation }) => ({
-            title: 'Home',
-            headerRight: <AddButton navigation={navigation} />,
-            headerLeft: <LogoutButton navigation={navigation}/>,
+        navigationOptions: () => ({
             tabBarIcon: ({ tintColor }) => {
                 return (
                     <FAIcon 
@@ -31,9 +28,7 @@ const Tabs = TabNavigator({
     },
     Profile: {
         screen: Profile,
-        navigationOptions: ({ navigation }) => ({
-            title: 'Profile',
-            headerLeft: <LogoutButton navigation={navigation} />,
+        navigationOptions: () => ({
             tabBarIcon: ({ tintColor }) => {
                 return (
                     <MIcon
@@ -59,5 +54,27 @@ const Tabs = TabNavigator({
         }
     }
 });
+
+
+//React Nav V2 Header button Work Around
+
+Tabs.navigationOptions = ({ navigation }) => {
+    const { state: { routes, index } } = navigation; 
+    const navigationOptions = {};
+
+    //
+    if (routes[index].routeName === 'Home') {
+        navigationOptions.title = 'Home';
+        navigationOptions.headerRight = <AddButton navigation={navigation} />;
+        navigationOptions.headerLeft = (<LogoutButton navigation={navigation} />);
+    }
+
+    if (routes[index].routeName === 'Profile') {
+        navigationOptions.title = 'Profile';
+        navigationOptions.headerLeft = (<LogoutButton navigation={navigation} />);
+    }
+
+    return navigationOptions;
+};
 
 export default Tabs;
